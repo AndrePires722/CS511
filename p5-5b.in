@@ -1,0 +1,29 @@
+% 2020-09-23 Assaf Kfoury
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Run by executing command:
+%
+%    $ prover 9 < p4.in
+% Recommended parameters:
+
+set(binary_resolution).
+clear(print_initial_clauses).
+clear(print_kept).
+clear(print_given).
+assign(max_seconds,10).
+assign(stats,none).
+
+
+formulas(assumptions).
+ina0=inb0.
+(outa0 = ina0) & (outa1 = outa0 * ina0) & (outa2 = outa1 * ina0) & (outa3 = outa2 * ina0).
+outb0 = (inb0 * inb0) * inb0.
+
+end_of_list.
+
+formulas(goals).
+
+outa3 = outb0.
+
+end_of_list.
+
